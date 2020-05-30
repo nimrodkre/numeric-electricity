@@ -1,19 +1,16 @@
 import matplotlib
 import math
-import relecasation
+import calculations
 import sys
 
 EPSILON = 1 / 1000
-SCALE = 100
+SCALE = 20
 CIRCLE_ERROR = 2
 L = 1 * SCALE
-r = L / 5 * SCALE
+r = L / 5
 d = 3 * L / 10
 PI0 = 1
 PI_CYCLINDER = 2 * PI0
-
-CIRCLE1_COORDINATES = ((3*L/10) + SCALE/2, 0)
-CIRCLE2_COORDINATES = ((-3*L/10) + SCALE/2, 0)
 
 
 def print_table(table):
@@ -34,10 +31,14 @@ def init_table(table):
         table[x][SCALE - 1] = round(PI0 * x / L - L / 2 / SCALE, 2)
 
     # init the circle1
-    for x in range(SCALE):
-        for y in range(SCALE):
-            if relecasation.distance(CIRCLE1_COORDINATES, (x, y)) == r * SCALE:
-                table[x][y] = PI_CYCLINDER * 2
+    CIRCLE1 = (d, SCALE / 2 - 1)
+    CIRCLE2 = (SCALE - d, SCALE / 2 - 1)
+    for y in range(SCALE):
+        for x in range(SCALE):
+            if round(calculations.distance(CIRCLE1, (x, y))) == r:
+                table[y][x] = 1
+            if round(calculations.distance(CIRCLE2, (x, y))) == r:
+                table[y][x] = 1
 
 
 
