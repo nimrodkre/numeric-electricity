@@ -16,6 +16,9 @@ r = L / 5
 d = 3 * L / 10
 PI0 = 1
 PI_CYCLINDER = 2 * PI0
+K = 100
+
+
 
 def color_table(table):
     fig = pyplot.figure()
@@ -72,10 +75,14 @@ def fill_table(table):
 def build_potential_table():
     table = np.zeros((SCALE,SCALE))
     init_table(table)
-    for i in range(100):
+    for i in range(K):
         table = fill_table(table)
     color_table(table)
 
+def print_elctric_table(table):
+    for i in table:
+        print(i)
 
 if __name__ == '__main__':
     build_potential_table()
+
